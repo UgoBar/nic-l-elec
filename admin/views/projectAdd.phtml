@@ -1,0 +1,161 @@
+
+<a href="projectList.php" class="btn btn-secondary mb-3"><i class="fas fa-arrow-alt-circle-left pr-1"></i>Annuler</a>
+
+<form action="" method="POST" enctype="multipart/form-data" class="form-horizontal form-material">
+
+<?php /* EDITION : si on a un ID on le met dans un champ caché ! */
+if($id !== null) :?>
+    <input type="hidden" name="id" value="<?=$id?>">
+<?php endif;?>
+
+<div class="row">
+    <div class="col-lg-4 col-xlg-3 col-md-12 mb-4">
+        <label class="col-md-12 pl-0 h3 text-primary text-center" for="picture1">Photo n°1</label>
+        <div class="white-box mb-2" style="background:#edf1f5">
+            <div class="user-bg">
+                <!-- EDITION : si on a une photo on l'affiche et on passe le nom de cette photo dans un champ caché ! -->
+                <?php if($oldPicture1 !== null) :?>
+                    <input type="hidden" name="oldPicture1" value="<?=$oldPicture1?>">
+                    <img src="../uploads/projects/<?=$oldPicture1?>">
+                <?php else:?>
+                    <img src="../uploads/projects/default-image-resized.png" class="card-img-top">
+                <?php endif;?>
+            </div>
+        </div>
+        <div class="parent-div d-flex justify-content-center flex-wrap">
+            <input type="file" name="picture1" id="picture1" class="filepond" data-max-files="1"/>
+            <?php if($oldPicture1 !== null) :?>
+                <div class="w-100 text-center pt-2">
+                    <label class="pr-2 text-danger" for="deletePicture1">Supprimer la photo ?</label>
+                    <input class="form-check-input ml-0" type="checkbox" id="deletePicture1" name="deletePicture1" value="<?=$deletePicture1?>">
+                </div>
+            <?php endif;?>
+        </div>
+        
+        <?php if(!empty($errors) && isset($errors['picture1'])):?>
+            <p class="text-danger mb-0"><?=$errors['picture1']?></p>
+        <?php endif ?>
+    </div>
+
+    <div class="col-lg-4 col-xlg-3 col-md-12 mb-4">
+        <label class="col-md-12 pl-0 h3 text-primary text-center" for="picture2">Photo n°2</label>
+        <div class="white-box mb-2" style="background:#edf1f5">
+            <div class="user-bg">
+                <!-- EDITION : si on a une photo on l'affiche et on passe le nom de cette photo dans un champ caché ! -->
+                <?php if($oldPicture2 !== null) :?>
+                    <input type="hidden" name="oldPicture2" value="<?=$oldPicture2?>">
+                    <img src="../uploads/projects/<?=$oldPicture2 ?>">
+
+                <?php else:?>
+                    <img src="../uploads/projects/default-image-resized.png" class="card-img-top">
+                <?php endif;?>
+            </div>
+        </div>
+        <div class="parent-div d-flex justify-content-center flex-wrap">
+            <input type="file" name="picture2" id="picture2" class="filepond" data-max-files="1"/>
+            <?php if($oldPicture2 !== null) :?>
+                <div class="w-100 text-center pt-2">
+                    <label class="pr-2 text-danger" for="deletePicture2">Supprimer la photo ?</label>
+                    <input class="form-check-input ml-0" type="checkbox" id="deletePicture2" name="deletePicture2" value="<?=$deletePicture2?>">
+                </div>
+            <?php endif;?>
+        </div>
+        <?php if(!empty($errors) && isset($errors['picture2'])):?>
+            <p class="text-danger mb-0"><?=$errors['picture2']?></p>
+        <?php endif ?>
+    </div>
+
+    <div class="col-lg-4 col-xlg-3 col-md-12 mb-4">
+        <label class="col-md-12 pl-0 h3 text-primary text-center" for="picture3">Photo n°3</label>
+        <div class="white-box mb-2" style="background:#edf1f5">
+            <div class="user-bg">
+                <!-- EDITION : si on a une photo on l'affiche et on passe le nom de cette photo dans un champ caché ! -->
+                <?php if($oldPicture3 !== null) :?>
+                    <input type="hidden" name="oldPicture3" value="<?=$oldPicture3?>">
+                    <img src="../uploads/projects/<?=$oldPicture3?>">
+                <?php else:?>
+                    <img src="../uploads/projects/default-image-resized.png" class="card-img-top">
+                <?php endif;?>
+            </div>
+        </div>
+        <div class="parent-div d-flex justify-content-center flex-wrap">
+            <input type="file" name="picture3" id="picture3" class="filepond" data-max-files="1"/>
+            <?php if($oldPicture3 !== null) :?>
+                <div class="w-100 text-center pt-2">
+                    <label class="pr-2 text-danger" for="deletePicture3">Supprimer la photo ?</label>
+                    <input class="form-check-input ml-0" type="checkbox" id="deletePicture3" name="deletePicture3" value="<?=$deletePicture3?>">
+                </div>
+            <?php endif;?>
+        </div>
+        <?php if(!empty($errors) && isset($errors['picture3'])):?>
+            <p class="text-danger mb-0"><?=$errors['picture3']?></p>
+        <?php endif ?>
+    </div>
+
+    <div class="col-lg-12 col-xlg-9 col-md-12">
+        <p class="form-text text-center text-primary">Pour modifier une image téléchargez en une nouvelle. Sinon l'ancienne sera conservée !</p>
+    </div>
+
+    <div class="col-lg-12 col-xlg-9 col-md-12 pt-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group col-md-6 pb-4 mb-0">
+                    <label for="title">Titre</label>
+                    <div class="col-md-6 border-bottom p-0">
+                        <input type="text" name="title" id="title" value="<?=$title?>" class="form-control pl-2 border-0"/>
+                    </div>
+                    <?php if(!empty($errors) && isset($errors['title'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['title']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-6 pb-4 mb-0">
+                    <label for="summary">Résumé (court)</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="text" name="summary" id="summary" value="<?=$summary?>" class="form-control pl-2 border-0"/>
+                    </div>
+                        <?php if(!empty($errors) && isset($errors['summary'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['summary']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-12 pb-4 mb-0">
+                    <label for="description">Description du projet</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <textarea class="form-control" name ="description" id="description" rows="6" style="height: 300px;"><?=$description?></textarea>
+                    </div>    
+                    <?php if(!empty($errors) && isset($errors['description'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['description']?></p>
+                    <?php endif ?>
+                </div>
+                
+                <div class="form-group col-md-12 pb-4">
+                    <div class="w-100">
+                        <label class="pr-2" for="top">Projet classé top ?</label>
+                        <input class="form-check-input ml-0" type="checkbox" id="top" name="top" value="<?=$top?>"
+                        <?php if ($top ==  1):?> checked <?php endif;?>>
+                    </div>
+                    <small class="text-secondary">Les projets classés "top" seront ceux affichés sur la page d'accueil</small>
+                </div>
+                
+                <div class="form-group col-md-4 pb-4 mb-0">
+                    <label for="display">Afficher le projet en position</label>
+                    <div class="col-md-6 border-bottom p-0">
+                    <input type="number" name="display" id="display" min="1" max="50" value="<?=$display?>" class="form-control pl-2 border-0" required/>
+                    </div>
+                    <?php if(!empty($errors) && isset($errors['display'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['display']?></p>
+                    <?php endif ?>
+                    <?php if($display == null):?>
+                        <small class="text-secondary">Pour info tu as déjà <?=$count['pro_count']?> projet(s). Ordre suggéré : <?=$count['pro_count']+1?></small>
+                    <?php endif ?>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xlg-3 col-md-12"></div>
+    <div class="col-lg-8 col-xlg-9 col-md-12">
+        <button type="submit" class="btn btn-primary"><?php if (is_null($id)) : ?>AJOUTER<?php else : ?>MODIFIER<?php endif; ?></button>
+    </div>
+</form>

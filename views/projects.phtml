@@ -1,0 +1,28 @@
+<div class="fond-perdu"></div>
+
+
+<section class="projects">
+    <h1 class="text-center">Projets</h1>
+    <h2 class="text-center">Réalisés sur l'île d'Oléron</h2>
+
+    <?php foreach($projects as $project) :?>
+    <article>
+        <div class="container">
+            <h3><?=$project['pro_title']?></h3>
+            <div><?=$project['pro_description']?></div>
+            <div class="projects-pictures">
+                <?php if($project['pro_picture1']!==null) :?> <!-- Est-ce que la photo 1 existe ? --> 
+                    <div class="parent-picture"><figure class="child" style="background-image:url(<?=$url?><?=$project['pro_picture1']?>)"></figure></div>
+                <?php endif ;?>
+                <?php if($project['pro_picture2']!==null) :?> <!-- Est-ce que la photo 2 existe ? --> 
+                    <div class="parent-picture"><figure class="child" style="background-image:url(<?=$url?><?=$project['pro_picture2']?>)"></figure></div>
+                <?php endif ;?>
+                <?php if($project['pro_picture3']!==null) :?> <!-- Est-ce que la photo 3 existe ? --> 
+                    <div class="parent-picture"><figure class="child" style="background-image:url(<?=$url?><?=$project['pro_picture3']?>)"></figure></div>
+                <?php endif ;?>
+            </div>
+        </div>
+    </article>
+    <?php endforeach ?>
+
+</section>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><?=$titlePage?></title>
+        <link rel="icon" href="../img/nic.l-elec-favicon.png" />
+        <link href="css/uploader.css" rel="stylesheet" type="text/css">
+        <!-- FONT AWESOME -->
+        <script src="https://kit.fontawesome.com/73ab01ebea.js" crossorigin="anonymous"></script>
+        <!-- BOOTSTRAP CSS -->
+        <link href="css/style.min.css" rel="stylesheet" type="text/css">
+        <link href="css/custom.css" rel="stylesheet" type="text/css">
+        <!-- TINY MCE JAVASCRIPT -->
+        <script src="js/tinymce/tinymce.min.js"></script>
+    </head>
+
+    <body>
+      <!-- ============================================================== -->
+      <!-- Preloader - style you can find in spinners.css -->
+      <!-- ============================================================== -->
+      <div class="preloader">
+          <div class="lds-ripple">
+              <div class="lds-pos"></div>
+              <div class="lds-pos"></div>
+          </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- Main wrapper - style you can find in pages.scss -->
+      <!-- ============================================================== -->
+      <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+          data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+          <!-- ============================================================== -->
+          <!-- Topbar header - style you can find in pages.scss -->
+          <!-- ============================================================== -->
+          <header class="topbar" data-navbarbg="skin5">
+              <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                  <div class="navbar-header" data-logobg="skin6">
+                      <!-- ============================================================== -->
+                      <!-- Logo -->
+                      <!-- ============================================================== -->
+                      <a class="logo text-dark h4 pl-4 pr-2" href="index.php">
+                        <img src="img/logo-icon.png" alt="home" class="dark-logo" />
+                        Nic.L Elec
+                      </a>
+                      <!-- ============================================================== -->
+                      <!-- End Logo -->
+                      <!-- ============================================================== -->
+                      <!-- ============================================================== -->
+                      <!-- toggle and nav items -->
+                      <!-- ============================================================== -->
+                      <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                          href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                  </div>
+                  <!-- ============================================================== -->
+                  <!-- End Logo -->
+                  <!-- ============================================================== -->
+                  <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                      <ul class="navbar-nav d-none d-md-block d-lg-none">
+                          <li class="nav-item">
+                              <a class="nav-toggler nav-link waves-effect waves-light text-white"
+                                  href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                          </li>
+                      </ul>
+                      <!-- ============================================================== -->
+                      <!-- Right side toggle and nav items -->
+                      <!-- ============================================================== -->
+                      <ul class="navbar-nav ml-auto d-flex align-items-center">
+                          <!-- ============================================================== -->
+                          <li>
+                                <a class="profile-pic mr-3" href="#">
+                                <?php if ($_SESSION['user']['use_avatar'] == 'default-avatar-white.png') : ?>
+                                        <img src="../uploads/users/default-avatar-white.svg" alt="user-img" width="45" height="45" class="img-circle">
+                                    <?php else : ?>
+                                        <img src="../uploads/users/<?=$_SESSION['user']['use_avatar'] ?>" alt="user-img" width="45" height="45" class="img-circle">
+                                    <?php endif; ?>
+                                    <span class="text-white font-medium"><?= $_SESSION['user']['use_firstname'] ?></span>
+                                </a>
+                          </li>
+                          <!-- ============================================================== -->
+                          <!-- User profile and search -->
+                          <!-- ============================================================== -->
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+          <!-- ============================================================== -->
+          <!-- End Topbar header -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Left Sidebar - style you can find in sidebar.scss  -->
+          <!-- ============================================================== -->
+          <aside class="left-sidebar" data-sidebarbg="skin6" >
+              <!-- Sidebar scroll-->
+              <div class="scroll-sidebar">
+                  <!-- Sidebar navigation-->
+                  <nav class="sidebar-nav">
+                      <ul id="sidebarnav">
+                            <!-- DASHBOARD -->
+                            <li class="sidebar-item "> <a class="sidebar-link waves-effect waves-dark"
+                                href="index.php" aria-expanded="false"><i class="fas fa-clock fa-fw"
+                                aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+                            
+                            <!-- HOME -->
+                            <li class="sidebar-item "> <a class="sidebar-link waves-effect waves-dark"
+                                href="intro.php" aria-expanded="false"><i class="fas fa-pencil-alt fa-fw"
+                                aria-hidden="true"></i><span class="hide-menu">Introduction</span></a></li>
+
+                            <!-- USER PROFILE -->
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark"
+                                href="profile.php" aria-expanded="false">
+                                <i class="fa fa-user" aria-hidden="true"></i><span class="hide-menu">Profile</span></a></li>
+                            
+                            <!-- LISTE UTILISATEURS -->
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark"
+                                href="userList.php" aria-expanded="false"><i class="fa fa-users"
+                                aria-hidden="true"></i><span class="hide-menu">Utilisateurs</span></a></li>
+                                <!-- AJOUT UTILISATEUR -->
+                                <li class="sidebar-item "><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="userAdd.php" aria-expanded="false"><span class="hide-menu pl-2"><i class="fa fa-plus text-muted"
+                                    aria-hidden="true"></i>Ajouter un utilisateur</span></a></li>
+
+                            <!-- PROJETS -->        
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark"
+                                href="projectList.php" aria-expanded="false"><i class="fa fa-briefcase"
+                                aria-hidden="true"></i><span class="hide-menu">Projets</span></a></li>
+                                <!-- AJOUT PROJET -->
+                                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="projectAdd.php" aria-expanded="false"><span class="hide-menu pl-2"><i class="fa fa-plus text-muted"
+                                    aria-hidden="true"></i>Ajouter un projet</span></a></li>
+                                <!-- PROJECT ORDER -->
+                                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="projectDisplay.php" aria-expanded="false"></i><span class="hide-menu pl-2"><i class="fa fa-list text-muted"
+                                    aria-hidden="true"></i>Ordre des projets</span></a></li>
+
+                            <!-- SERVICES --> 
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark"
+                                href="serviceList.php" aria-expanded="false"><i class="fa fa-bolt"
+                                aria-hidden="true"></i><span class="hide-menu">Services</span></a></li>
+                                <!-- AJOUT SERVICE -->
+                                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="serviceAdd.php" aria-expanded="false"><span class="hide-menu pl-2"><i class="fa fa-plus text-muted"
+                                    aria-hidden="true"></i>Ajouter un service</span></a></li>
+                                <!-- SERVICE ORDER -->
+                                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="serviceDisplay.php" aria-expanded="false"><span class="hide-menu pl-2"><i class="fa fa-list text-muted"
+                                    aria-hidden="true"></i>Ordre des services</span></a></li>
+                                <!-- SERVICE ORDER -->
+                                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="tarifGrid.php" aria-expanded="false"><span class="hide-menu pl-2"><i class="fa fa-euro-sign text-muted"
+                                    aria-hidden="true"></i>Grille tarifaire</span></a></li>
+                            
+                            <!-- BANNIERE --> 
+                            <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark"
+                                href="bannerList.php" aria-expanded="false"><i class="fa fa-images"
+                                aria-hidden="true"></i><span class="hide-menu">Bannière</span></a></li>
+                                <!-- AJOUT PHOTO BANNIERE -->
+                                <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark py-2 text-muted"
+                                    href="bannerAdd.php" aria-expanded="false"><span class="hide-menu pl-2"><i class="fa fa-plus text-muted"
+                                    aria-hidden="true"></i>Ajouter une photo</span></a></li>
+                      </ul>
+
+                  </nav>
+                  <!-- End Sidebar navigation -->
+              </div>
+              <!-- End Sidebar scroll-->
+          </aside>
+          <!-- ============================================================== -->
+          <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Page wrapper  -->
+          <!-- ============================================================== -->
+          <div class="page-wrapper">
+              <!-- ============================================================== -->
+              <!-- Bread crumb and right sidebar toggle -->
+              <!-- ============================================================== -->
+              <div class="page-breadcrumb bg-white">
+                  <div class="row align-items-center pb-1">
+                      <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                          <h4 class="page-title text-uppercase font-medium font-14"><?=$titlePage?></h4>
+                      </div>
+                      <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+
+                        <div class="d-sm-flex">
+                            <ol class="breadcrumb ml-auto">
+                                <li><a href="logout.php"></a></li>
+                            </ol>
+                            <i class="fa fa-power-off pr-1 float-end"></i><a href="logout.php" class="text-dark">Déconnexion</a>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- /.col-lg-12 -->
+              </div>
+              <!-- ============================================================== -->
+              <!-- End Bread crumb and right sidebar toggle -->
+              <!-- ============================================================== -->
+              <!-- ============================================================== -->
+              <!-- Container fluid  -->
+              <!-- ============================================================== -->
+              <div class="container-fluid">
+        
+                <?php if (isset($flashbag) && $flashbag != false) : ?>
+                    <?php foreach ($flashbag as $message) : ?>
+                      <div class="alert alert-dismissible alert-<?= $message['level'] ?>" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <p><?= $message['message'] ?></p>
+                      </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+              
+                  <?php
+                      require($view.'.phtml');
+                  ?>
+              </div>
+          </div>
+      </div>
+      
+        <!-- Option 1: jQuery and Bootstrap Bundle -->
+        <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="plugins/bower_components/popper.js/dist/umd/popper.min.js"></script>
+        <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="js/app-style-switcher.js"></script>
+        <!--Wave Effects -->
+        <script src="js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="js/uploader.js"></script>
+        <script src="js/custom.js"></script>
+      
+        <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            relative_urls: false,
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table paste imagetools wordcount",
+                'image code'
+            ],
+            toolbar: "insertfile undo redo | image code | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            content_css: [
+                'bootstrap/dist/css/bootstrap.min.css',
+                'css/editor.css'
+            ]
+        });
+        </script>
+
+        <script>
+        var myCarousel = document.querySelector('#myCarousel')
+        var carousel = new bootstrap.Carousel(myCarousel)
+        </script>
+
+  </body>
+</html>

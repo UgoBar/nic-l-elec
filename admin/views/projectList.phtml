@@ -1,0 +1,83 @@
+
+
+<a href="projectAdd.php" class="btn btn-primary mb-3"><i class="fas fa-plus pr-1"></i> Ajouter un projet</a>
+<a href="projectDisplay.php" class="btn btn-primary mb-3"><i class="fas fa-list pr-1"></i> Modifier l'ordre</a>
+
+<div class="row ml-0 d-flex justify-content-xl-start justify-content-center">
+    <?php foreach($projects as $project): ?>
+        
+        <div class="pr-4 position-relative">
+            <div class="position-absolute" style="z-index:1;">
+                <a href="#" data-toggle="modal" data-target="#project-<?=$project['pro_id']?>" class="btn btn-danger"><i class="fas fa-window-close"></i></a>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <?php if ($project['pro_picture1'] === null): ?>
+                    <img src="../uploads/projects/default-image.png" class="card-img-top">
+                <?php else :?>
+                    <img src="../uploads/projects/<?=$project['pro_picture1']?>" class="card-img-top">
+                <?php endif ;?>
+                
+                
+                <div class="card-body">
+                    <h5 class="card-title"><?=$project['pro_title']?></h5>
+                    <p class="card-text"><?=$project['pro_summary']?></p>
+                    <a href="projectAdd.php?id=<?=$project['pro_id'] ?>" class="btn btn-primary"><i class="fas fa-edit pr-1"></i>MODIFIER</a>
+                    <?php if ($project['pro_top'] == 1): ?>
+                        <a class="btn btn-warning"><i class="fas fa-star pr-1"></i>TOP</a>
+                    <?php endif ;?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de suppression -->
+        <?php if($_SESSION['user']['use_role'] !== 'ROLE_ADMIN') :?>
+            <div class="modal fade" id="project-<?=$project['pro_id']?>" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger" id="exampleModalLabel">Désolé...</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Vous n'avez <b>pas les droits</b> pour supprimer un projet.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php else :?>
+            <form action ="projectDelete.php" method="POST">
+                <div class="modal fade" id="project-<?=$project['pro_id']?>" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-danger" id="exampleModalLabel">Attention</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Êtes-vous sûr de vouloir supprimer le projet <b><?=$project['pro_title']?></b>?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <input type="hidden" name="title-<?=$project['pro_id']?>" value="<?=$project['pro_title']?>"/>
+                                <input type="hidden" name="picture1-<?=$project['pro_id']?>" value="<?=$project['pro_picture1']?>"/>
+                                <input type="hidden" name="picture2-<?=$project['pro_id']?>" value="<?=$project['pro_picture2']?>"/>
+                                <input type="hidden" name="picture3-<?=$project['pro_id']?>" value="<?=$project['pro_picture3']?>"/>
+                                <button type="submit" name="<?=$project['pro_id']?>" class="btn btn-danger" value="<?=$project['pro_id']?>">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        <?php endif ;?>
+    <?php endforeach ?>
+</div>
+
+
+

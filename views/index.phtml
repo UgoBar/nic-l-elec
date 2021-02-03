@@ -1,0 +1,88 @@
+<!-- BANNIERE -->
+<input type="hidden" value="uploads/banner/<?=$picture1?>" id="carousel-img-1">
+<input type="hidden" value="uploads/banner/<?=$picture2?>" id="carousel-img-2">
+<input type="hidden" value="uploads/banner/<?=$picture3?>" id="carousel-img-3">
+<div id="carousel" class="relative">
+    <div class="banner" id="carousel-item-1"></div>
+    <div class="banner" id="carousel-item-2"></div>
+    <div class="banner" id="carousel-item-3"></div>
+    <div class="carousel-control">
+        <a class="carousel-control-prev" role="button"><i class="fas fa-arrow-circle-left"></i></a>
+        <a class="carousel-control-next" role="button"><i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+
+    <!-- INTRODUCTION -->
+    <?php if(!empty($introductions)) :?>
+        <section class="introduction">
+            <div class="container">
+                <?php foreach($introductions as $introduction): ?>
+                    <h1 class="text-center"><?=$introduction['hom_title']?></h1>
+                    <?=$introduction['hom_description']?>
+                <?php endforeach ?>
+            </div>
+        </section>
+    <?php endif ;?>
+
+    <!-- PROJETS TOP -->
+    <?php if(!empty($topProjects)) :?>
+        <section class="top-projects">
+            <div class="container flex wrap justify-center">
+                <h2 class="text-center w-100">Projets</h2>
+                <?php foreach($topProjects as $topProject) :?>
+                    <div class="project-card w-50">
+                        <figure>
+                        <?php if($topProject['pro_picture1']!==null) :?> <!-- Est-ce que la photo 1 existe ? -->
+                            <img class="d-block m-auto" src="uploads/projects/<?=$topProject['pro_picture1'] ?>" alt="photo du projet <?=$topProject['pro_title']?>">
+                        <?php elseif($topProject['pro_picture2']!==null) :?> <!-- Est-ce que la photo 2 existe ? -->
+                            <img class="d-block m-auto" src="uploads/projects/<?=$topProject['pro_picture2'] ?>" alt="photo du projet <?=$topService['pro_title']?>">
+                        <?php elseif($topProject['pro_picture3']!==null) :?> <!-- Est-ce que la photo 3 existe ? -->
+                            <img class="d-block m-auto" src="uploads/projects/<?=$topProject['pro_picture3'] ?>" alt="photo du projet <?=$topService['pro_title']?>">
+                        <?php endif ;?>
+                        </figure>
+                        <h3 class="text-center"><?=$topProject['pro_title']?></h3>
+                        <?=$topProject['pro_description']?>
+                    </div>
+                <?php endforeach ?>
+            </div>
+            <a href="/realisations" class="btn btn-gradient text-center">Voir tous les projets</a>
+        </section>
+    <?php endif ;?>
+
+    <!-- SERVICES TOP -->
+    <?php if(!empty($topServices)) :?>
+        <section class="top-services">
+            <div class="container flex wrap justify-around">
+                <h2 class="text-center w-100">Services</h2>
+                <?php foreach($topServices as $topService) :?>
+                    <div class="service-card w-33">
+                        <img class="d-block m-auto" src="uploads/services/<?=$topService['ser_picture'] ?>" alt="photo du service <?=$topService['ser_title']?>">
+                        <h3 class="text-center"><?=$topService['ser_title']?></h3>
+                        <?=$topService['ser_description']?>
+                        <?php if(!empty($topService['ser_price'])) :?>
+                            <p class="bold text-blue price"><?=$topService['ser_price']?></p>
+                        <?php endif ;?>
+                    </div>
+                <?php endforeach ?>
+            </div>
+            <a class="btn btn-gradient text-center" href="/services">Voir tous les services</a>
+        </section>
+    <?php endif ;?>
+
+    <section class="contact">
+        <div class="container flex wrap justify-around">
+            <form method="post" action="contactForm.php" class="indexContact flex wrap justify-around">
+                <h2 class="text-center text-blue w-100">Contact</h2>
+                <p class="text-center text-muted m-0">Si vous avez une demande n'hésitez pas à m'envoyer un mail à l'aide du formulaire ci dessous.</p>
+                <div class="innerForm flex wrap justify-around">
+                    <input class="w-50" type="text" name="name" id="name" placeholder="Entrez votre nom" required>
+                    <input class="w-50" type="email" name="email" id="email" placeholder="Entrez votre email" required>
+                    <input class="w-100" type="text" name="subject" placeholder="Sujet du mail" required>
+                    <textarea name="content" id="content" placeholder="Formulez votre demande" required></textarea>
+                    <small class="w-100">Tous les champs obligatoires.</small>
+                    <small class="w-100 bold">Réponse en 24h.</small>
+                </div>
+                <button class="btn btn-blue m-auto" type="submit" name="contactMe">Envoyer</button>
+            </form>
+        </div>
+    </section>

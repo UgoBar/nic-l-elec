@@ -1,0 +1,601 @@
+/*
+██╗███╗   ██╗██████╗ ███████╗██╗  ██╗
+██║████╗  ██║██╔══██╗██╔════╝╚██╗██╔╝
+██║██╔██╗ ██║██║  ██║█████╗   ╚███╔╝ 
+██║██║╚██╗██║██║  ██║██╔══╝   ██╔██╗ 
+██║██║ ╚████║██████╔╝███████╗██╔╝ ██╗
+╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+*/
+
+/******* BANNIERE *******/
+#carousel {
+    overflow: hidden;
+    height: 650px;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(23,17,17,0.5606443260898109) 100%);
+}
+
+#carousel .banner {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    position:relative;
+    
+}
+#carousel .banner#carousel-item-2{
+    top:-100%;
+}
+#carousel .banner#carousel-item-3{
+    top:-200%;
+}
+
+#carousel .banner.slideactive {
+    opacity: 1;
+    animation-duration: 0.5s;
+    animation-name: slidein;
+    visibility: visible;
+}
+#carousel .banner:not(.slideactive) {
+    opacity: 0;
+	animation-duration: 0.5s;
+    animation-name: slideout;
+    visibility: hidden;
+}
+@keyframes slidein {
+    from {
+      left:100%
+    }
+  
+    to {
+        left:0%
+    }
+}
+@keyframes slideout {
+    from {
+      left:0%
+    }
+  
+    to {
+        left:-100%
+    }
+}
+/*** carousel nav ***/
+.carousel-control-next, .carousel-control-prev {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	width: 15%;
+	color: #fff;
+	text-align: center;
+    opacity: .5;
+    font-size:4rem;
+    cursor:pointer;
+    height:110%;
+}
+
+.carousel-control-prev {
+    left: 0;
+}
+.carousel-control-next {
+    right: 0;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover {
+    opacity: 1;
+}
+
+/*********** INTRO ************/
+.introduction iframe {
+    width:50%;
+    margin-top:3rem;
+}
+/*********** PROJETS TOP ************/
+
+section.top-projects
+{
+    background-color: var(--grey);
+}
+.project-card, .service-card {
+    padding:1.5rem;
+    border-radius: 4px;
+    margin-top:2rem;
+    margin-bottom:3rem;
+    transition: all 0.25s ease-in-out;
+}
+.project-card img{
+    width:350px;
+    border-radius: 4px;
+    padding-bottom:2rem;
+}
+.project-card:hover, .service-card:hover {
+    background: #fff;
+    box-shadow: 0 8px 48px 0 rgba(0,0,0,.15);
+}
+
+/*********** SERVICES TOP ************/
+.price {
+    font-family: 'Jost', sans-serif;
+}
+/*********** CONTACT ************/
+section.contact
+{
+    background-color: var(--grey);
+}
+
+.indexContact {
+    background-color: white;
+    padding:3rem;
+    display: flex;
+    width:75%;
+}
+
+.innerForm {
+    margin-top:3rem;
+    padding:0 2rem;
+}
+
+form input,
+form textarea {
+    font-family: 'Jost', sans-serif;
+    padding:1.3rem;
+    margin:1rem 0;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: all .3s;
+}
+
+.innerForm input:first-of-type {
+    margin-right: 1rem;
+}
+
+input.w-50 {
+    width:49%;
+}
+
+textarea {
+    width:100%;
+    height: 150px;
+}
+
+.indexContact input:focus,
+.indexContact textarea:focus {
+    box-shadow: 0 0 2px var(--darkBlue);
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--blue);
+}
+
+.innerForm small{
+    margin-left:1rem;
+    padding-bottom:1rem;
+}
+
+/*
+ █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗
+██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝
+███████║██████╔╝██║   ██║██║   ██║   ██║   
+██╔══██║██╔══██╗██║   ██║██║   ██║   ██║   
+██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║   
+╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   
+*/
+.parent-avatar {
+    width: 30rem;
+    display: block;
+    margin: 2rem auto;
+    margin-bottom:3rem;
+    height: 30rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.avatar {
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.parent-avatar:hover .avatar, .parent-avatar:focus .avatar {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.about {
+    padding-bottom:3rem;
+}
+.user-description {
+    display: block;
+    margin:0 auto;
+    width:50%
+}
+
+.about div:last-of-type {
+    margin:3rem 0;
+}
+
+.about div a:first-of-type {
+    margin-right:2rem;
+}
+
+.about iframe {
+    width:100%;
+}
+/*
+██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗
+██╔══██╗██╔══██╗██╔═══██╗     ██║██╔════╝██╔════╝╚══██╔══╝
+██████╔╝██████╔╝██║   ██║     ██║█████╗  ██║        ██║   
+██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║   
+██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║   
+╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝   
+*/
+.projects article:nth-child(even) {
+    background-color: var(--grey);
+}
+
+article {
+    padding:3rem 0;
+}
+
+.projects-pictures {
+    display:flex;
+    flex-flow: row wrap;
+}
+.parent-picture {
+    width: 30%;
+    margin-bottom:3rem;
+    height: 20rem;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-right: 2rem;
+}
+.child {
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.parent-picture:hover .child, .parent-picture:focus .child {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+/*
+███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗
+██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝██╔════╝
+███████╗█████╗  ██████╔╝██║   ██║██║██║     █████╗  ███████╗
+╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║██║     ██╔══╝  ╚════██║
+███████║███████╗██║  ██║ ╚████╔╝ ██║╚██████╗███████╗███████║
+╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
+*/
+.services h1  {
+    margin-bottom:5rem;
+}
+
+.services p {
+    margin:0;
+}
+.services .relative {
+    left:-2%;
+    margin-bottom:4rem;
+}
+#service-1, #service-2, #service-3, #service-4, #service-5, #service-6 {
+    position: absolute;
+}
+
+#service-1 {
+    top: -2%;
+    left: 50%;
+    width: 49%;
+}
+
+#service-2 {
+    top: 28%;
+    left: 60%;
+    width:41%;
+}
+
+#service-3 {
+    top: 55%;
+    left: 65%;
+    width:35%;
+}
+
+#service-4 {
+    top: 76%;
+    left: 15%;
+    text-align: end;
+    width: 38%;
+}
+
+#service-5 {
+    top: 47%;
+    left: 11%;
+    text-align: end;
+    width: 30%;
+}
+
+#service-6 {
+    top: 15%;
+    left: 3%;
+    text-align: end;
+    width: 33%;
+}
+
+.service .parent-picture {
+    display:none;
+}
+
+/** Après les 6 premiers services */
+.sixPlusServices {
+    width:60%;
+    margin:auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding:1.5rem 0;
+    border-top: thin solid var(--blue);
+}
+
+.sixPlusServices p {
+    margin:1.5rem 0;
+}
+.sixPlusServices .parent-picture {
+    width: 10rem;
+    display: block;
+    margin-bottom:0;
+    height: 10rem;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.sixPlusServices .service-info {
+    width:80%;
+    padding-left: 1rem;
+}
+.sixPlusServices .service-picture {
+    width: 20%;
+}
+
+/********** TARIFS *********/
+.tarifs {
+    margin: auto;
+}
+table {
+    color: var(--darkBlue);
+    font-weight: 300;
+    border-collapse: collapse;
+    margin-top: 4rem;
+    width: 100%;
+}
+
+table th {
+    color:var(--blue);
+}
+
+table td, table th {
+	padding: 0.9375rem 0.4rem;
+	vertical-align: baseline;
+	border-top: 1px solid rgba(120, 130, 140, 0.13);
+}
+
+tbody tr:nth-of-type(2n+1) {
+    background-color: var(--grey);
+}
+
+/*
+ ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗
+██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝
+██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║   
+██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║   
+╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║   
+ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝   
+*/
+.fond-perdu section.contact {
+    padding: 0;
+}
+/* ************************************
+************* RESPONSIVE **************
+************************************ */
+@media (max-width: 1052px)
+{
+    input.w-50 {
+        width:100%;
+    }
+
+    .innerForm input:first-of-type {
+        margin-right: 0;
+    }
+
+    #service-4 {
+        left: 14%;
+    }
+}
+
+@media (max-width: 992px)
+{
+     /**  INDEX   **/
+    /************ */
+    .introduction iframe {
+        width:80%;
+    }
+    .service-card {
+        width:50%;
+    }
+    
+     /** * ABOUT ** */
+    /** ********** */
+    .user-description {
+        width: 70%;
+    }
+
+     /**  SERVICES */
+    /************ */
+    .services .relative {
+        left:0;
+        margin-bottom:0;
+    }
+    .services {
+        padding-bottom:3rem;
+    }
+    .services h1 {
+        margin-bottom:2rem;
+    }
+    .oleron {
+        display: none;
+    }
+    #service-1, #service-2, #service-3, #service-4, #service-5, #service-6 {
+        position: unset;
+        width:100%;
+        text-align: inherit;
+    }
+    .service {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        padding:1.5rem 0;
+        border-bottom: thin solid var(--blue);
+    }
+    .service:last-child {
+        border-bottom: none;
+    }
+    .services p {
+        margin:1.5rem 0;
+    }
+    .service .parent-picture {
+        width: 10rem;
+        display: block;
+        margin-bottom:0;
+        height: 10rem;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    .service-info {
+        width:80%;
+        padding-left: 1rem;
+    }
+    .service-picture {
+        width: 20%;
+    }
+
+    .sixPlusServices {
+        width:100%;
+        margin-top:0;
+    }
+
+     /**** TARIFS  ****/
+    /****************/
+    .tarifs {
+        width:80%
+    }
+}
+
+@media (max-width: 768px)
+{
+     /** * INDEX ** */
+    /** ********** */
+    .introduction img {
+        width:100%;
+    }
+
+    .project-card {
+        width:100%;
+    }
+    .service-card {
+        width:100%;
+    }
+
+    .indexContact {
+        width:90%;
+    }
+
+     /** * PROJECTS ** */
+    /** ************* */
+    .parent-picture {
+        width: 100%;
+        margin-right:0;
+    }
+}
+
+@media (max-width: 576px)
+{
+    /*** INDEX ***/
+    /*************/
+    .introduction iframe {
+        width:100%;
+    }
+
+    #carousel {
+        height:400px;
+    }
+    .innerForm {
+        margin-bottom:2rem;
+    }
+
+     /** * ABOUT ** */
+    /** ********** */
+    .parent-avatar {
+        width:25rem;
+        height:25rem;
+    }
+    .user-description {
+        width:90%;
+    }
+}
+
+@media (max-width: 470px)
+{
+    /** ** ABOUT ** */
+    /** ********** */
+    .parent-avatar {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    /**  SERVICES  */
+    /** ********** */
+    .service-picture {
+        display: none;
+    }
+    .service-info {
+        width:100%;
+    }
+
+    /**** TARIFS  ****/
+    /****************/
+    .tarifs {
+        width:100%
+    }
+}
+@media (max-width: 392px)
+{
+    /** FORMULAIRE **/
+    form textarea {
+        margin-left: 0;
+        margin-right: 0;
+        height: 200px;
+    }
+    .innerForm small {
+        margin-left:0;
+    }
+
+    .innerForm {
+        padding:0;
+    }
+}

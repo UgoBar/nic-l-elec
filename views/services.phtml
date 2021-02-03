@@ -1,0 +1,77 @@
+<div class="fond-perdu"></div>
+
+<div class="container">
+
+    <!-- SERVICES -->
+    <section class="services">
+        <h1 class="text-center">Services</h1>
+        <h2 class="text-center">Disponible sur toute l'île d'Oléron</h2>
+
+        <div class="relative">
+            <img class="oleron d-block m-auto" src="img/electricien-oleron.png" alt="dessin de l'île d'oléron">
+            <!-- Affichage des 6 premiers services -->
+            <?php foreach($firstSixServices as $firstSixService) :?>
+                <div class="service" id="service-<?=$firstSixService['ser_display']?>">
+                    <?php if($firstSixService['ser_picture']!==null) :?> <!-- Est-ce que la photo 1 existe ? -->
+                        <div class="service-picture">
+                            <div class="parent-picture"><figure class="child" style="background-image:url(<?=$url?><?=$firstSixService['ser_picture']?>)"></figure></div>
+                        </div> 
+                    <?php endif ;?>
+                    <div class="service-info">
+                        <h3><?=$firstSixService['ser_title']?></h3>
+                        <?=$firstSixService['ser_description']?>
+                        <?php if(!empty($firstSixService['ser_price'])) :?>
+                            <p class="bold text-blue price"><?=$firstSixService['ser_price']?></p>
+                        <?php endif ;?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+
+        <!-- Affichage des services après les 6 premiers -->
+        <?php foreach($sixPlusServices as $sixPlusService) :?>
+            <div class="sixPlusServices">
+                <?php if($sixPlusService['ser_picture']!==null) :?> <!-- Est-ce que la photo 1 existe ? -->
+                    <div class="service-picture">
+                        <div class="parent-picture"><figure class="child" style="background-image:url(<?=$url?><?=$sixPlusService['ser_picture']?>)"></figure></div>
+                    </div> 
+                <?php endif ;?>
+                <div class="service-info">
+                    <h3><?=$sixPlusService['ser_title']?></h3>
+                    <?=$sixPlusService['ser_description']?>
+                    <?php if(!empty($sixPlusService['ser_price'])) :?>
+                        <p class="bold text-blue price"><?=$sixPlusService['ser_price']?></p>
+                    <?php endif ;?>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </section>
+
+    <!-- TABLEAU -->
+    <section class="tarifs w-50">
+
+        <h2 class="text-center">Grille tarifaire</h2>
+        <p >Les prix correspondants sont amenés à varier en fonction de plusieurs paramètres comme :</p>
+        <ul >
+            <li>La demande</li>
+            <li>L'aménagement de votre maison (l'accès)</li>
+            <li>La propreté de vos installations electroniques</li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Libellé</th>
+                    <th class="text-center" scope="col">Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($tarifs as $tarif): ?>
+                <tr>
+                    <td class="text-center"><?=$tarif['tar_title']?></td>
+                    <td class="text-center"><?=$tarif['tar_price']?></td>
+            <?php endforeach ?>
+            </tbody>
+        </table>
+
+    </section>
+</div>

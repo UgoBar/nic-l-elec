@@ -1,0 +1,445 @@
+/* *****************************************************************
+								TOOLS
+***************************************************************** */
+
+*, *::before, *::after {
+	box-sizing: inherit; /* On spécifie que la largeur (width) de chaque boîte comprend le padding et la bordure (par défaut, c'est seulement la largeur du contenu) */
+}
+
+html {
+	font-size: 62.5%; /* 1rem = 10px (la formule est 10/16*100) la taille par défaut étant 16px */
+	box-sizing: border-box;
+}
+
+body {
+    font-size: 1.5rem; /* on remets la taille du texte par défaut pour le body à 15px en utilisant les rem comme unité) */
+    letter-spacing: 1px;
+}
+
+a {
+	text-decoration:none;
+}
+
+figure {
+    margin:0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin:0;
+}
+
+/* *****************************************************************
+						    VARIABLES
+***************************************************************** */
+
+:root {
+    
+    /* Color */
+    --red: #e73e3b;
+    --blue: #18828F;
+    --darkBlue: #0C5B75;
+    --yellow: #F9EFC7;
+    --grey: #f2f2f2;
+    --black : #343a40;
+    --gradient : linear-gradient(90deg, rgba(12,91,117,1) 0%, rgba(42,162,176,1) 100%);
+
+    /* Fonts */
+    --title: 'Bodoni Moda', serif;
+    --subtitle: 'Jost', sans-serif;
+    --main: 'Roboto Condensed', sans-serif;
+}
+
+/* *****************************************************************
+						GLOBAUX TECHNIQUE
+***************************************************************** */
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.container {
+    max-width:100%;
+    width:1140px;
+    margin:0 auto;
+    padding:0 1.5rem;
+    position:relative;
+}
+
+.p-0 {
+    padding:0;
+}
+
+.m-0 {
+    margin:0;
+}
+/******** FLEX ********/
+.flex {
+    display:flex;
+}
+
+.column {
+    flex-direction:column;
+}
+
+.wrap {
+    flex-wrap: wrap
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-center {
+     justify-content: center;
+}
+
+.justify-around {
+     justify-content: space-around;
+}
+
+.align-center {
+    align-items:center;
+}
+
+/******** DISPLAY ********/
+.d-block {
+    display: block;
+}
+.m-auto {
+    margin:0 auto;
+}
+/******** FLOAT ********/
+.right {
+    float:right;
+}
+
+.left {
+    float:left;
+}
+
+/******** WIDTH ********/
+.w-100 {
+    width:100%;
+}
+
+.w-60 {
+    width:60%;
+}
+
+.w-50 {
+    width:47%;
+}
+
+.w-40 {
+    width:40%;
+}
+
+.w-33 {
+    width:30%;
+}
+
+.w-25 {
+    width:23%;
+}
+
+/******** FONTS ********/
+.capital {
+    text-transform:uppercase;
+}
+
+.underline {
+    text-decoration:underline;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+.text-center {
+    text-align:center;
+}
+
+.text-red {
+    color: var(--red);
+}
+
+.text-blue {
+    color: var(--blue);
+}
+
+.text-yellow {
+    color: var(--yellow);
+}
+
+.text-white {
+    color:#fff;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+/******** ACTIVE ********/
+.active {
+    color: var(--darkBlue);
+    /*border-bottom:1px solid var(--darkBlue);*/
+}
+/* *****************************************************************
+					    GLOBAUX GRAPHIQUE
+***************************************************************** */
+/********** BUTTON **********/
+.btn {
+    display:block;
+    padding:1.5rem 2.5rem;
+    font-family: var(--subtitle);
+    font-size:1.4rem;
+    border-radius:3px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-blue {
+    background-color: var(--blue);
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-green {
+    background-color: var(--blue);
+    color: rgb(62, 209, 118);
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-gradient {
+    background: linear-gradient(120deg, rgba(12,91,117,1) 0%, rgba(42,162,176,1) 100%);
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+/********* POSITION *********/
+.relative{
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+/********** HOVER ***********/
+.btn-blue:hover {
+    background-color:#2AA2B0;
+    box-shadow: 0 8px 48px 0 rgba(0,0,0,.1);
+}
+.btn-gradient:hover {
+    box-shadow: 0 8px 48px 0 rgba(0,0,0,.1);
+}
+/******** VISIBILITY ********/
+.hidden {
+    display: none;
+}
+/* *****************************************************************
+					           MAIN
+***************************************************************** */
+body {
+    color : var(--black);
+    font-family: var(--main);
+    line-height: 1.4;
+}
+h1 {
+    font-size:7rem;
+    background-image:linear-gradient(90deg, rgba(12,91,117,1) 0%, rgba(42,162,176,1) 100%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+h2 {
+    font-size:5rem;
+}
+
+h3 {
+    font-size:2.5rem;
+}
+
+h4 {
+    font-size:1.6rem;
+}
+
+h5 {
+    font-size:3.2rem;
+}
+
+h6 {
+    font-size:1.8rem;
+}
+
+h1, h4 {
+    font-family: var(--title);
+    font-weight:lighter;
+}
+
+h2, h3 {
+    font-family: var(--subtitle);
+    font-weight:lighter;
+}
+
+section {
+    padding:3rem 0;
+    padding-bottom:6rem
+}
+
+.projects h2, .services h2 {
+    display:none;
+}
+
+/* *****************************************************************
+					          HEADER
+***************************************************************** */
+header {
+    padding: 0.2rem 0;
+    background-color: var(--yellow);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+    position:fixed;
+    z-index: 999;
+    width:100%;
+}
+nav a {
+    font-family: var(--subtitle);
+    font-size:1.8rem;
+    color: var(--blue);
+    transition: all 0.3s ease-in;
+    letter-spacing: 1px;
+}
+nav a:hover {
+    color: var(--darkBlue);
+    
+}
+#toggle-navbar {
+    display:none;
+}
+.fond-perdu {
+    height:79px;
+}
+/* *****************************************************************
+					        FOOTER
+***************************************************************** */
+footer {
+    background-color: var(--yellow);
+    width: 100%;
+    padding-bottom:2rem;
+}
+
+footer .btn-gradient {
+    height: 1rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+footer img {
+    width: 20%;
+    display: block;
+    margin: auto;
+    padding-top: 2rem;
+}
+
+
+footer p:end-of-type {
+    margin:0;
+    padding-top:1rem;
+    font-size: 2rem;
+    font-family: var(--subtitle);
+}
+.footer-contact {
+    font-size: 2rem;
+    font-family: var(--subtitle);
+    padding-bottom:1rem;
+    margin: 1rem 0;
+    border-bottom: thin solid var(--blue);
+    border-top: thin solid var(--blue);
+}
+
+.footer-contact p {
+    margin:0;
+    padding-top:1rem;
+    color: var(--darkBlue);
+}
+/* *****************************************************************
+********************************************************************
+					      MEDIA QUERIES
+********************************************************************
+***************************************************************** */
+@media (max-width: 992px)
+{
+    .container {
+        max-width: 765px;
+    }
+    nav div:first-of-type {
+        width:30%
+    }
+    #navbar-desktop {
+        width:70%;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .container {
+        max-width: 90%;
+    }
+
+    /**** NAVBAR ****/
+    nav div:first-of-type {
+        width:50%
+    }
+    #navbar-desktop {
+        display:none;
+    }
+    #toggle-navbar {
+        display:flex;
+        font-size:3rem;
+        justify-content: flex-end;
+        width: 50%;
+        
+    }
+    /* button */
+    #toggle-navbar button {
+        background-color: var(--yellow);
+        border:none;
+    }
+    #navbar-mobile {
+        position: absolute;
+        /* top: -300px; */
+        top: 100%;
+        opacity:1;
+        transition: opacity 1s ease-in-out;
+        box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
+        background-color: var(--yellow);
+        padding: 0.5rem 4rem;
+        left:0;
+    }
+    #navbar-mobile a {
+        padding:1.2rem 0;
+    }
+    /**** FOOTER ****/
+    footer img {
+        width: 30%;
+    }
+}
+
+@media (max-width: 576px)
+{
+    /**** MAIN ****/
+    h1 {
+        font-size:5rem;
+    }
+    h2 {
+        font-size:4rem;
+    }
+    .container {
+        max-width: 100%;
+    }
+    /**** FOOTER ****/
+    footer img {
+        width: 40%;
+    }
+}

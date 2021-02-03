@@ -1,0 +1,120 @@
+<div class="table-responsive-md col-xlg-7 mt-4 all d-block m-auto">
+
+    <!-- TABLEAU -->
+    <form action ="tarifUpdate.php" method="POST">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col" style="width:15%">ID</th>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Prix d'entrée</th>
+                    <th scope="col">Ordre d'affichage</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($tarifs as $tarif): ?>
+                <tr>
+                    <td class="text-center text-primary"><?=$tarif['tar_id']?></td>
+                    <td>
+                        <div class="border-bottom p-0 input-group w-75">
+                            <input class="form-control border-0" type="text" name="title-<?=$tarif['tar_id']?>" value="<?=$tarif['tar_title']?>"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="border-bottom p-0 input-group w-75">
+                            <input class="form-control border-0" type="text" name="price-<?=$tarif['tar_id']?>" value="<?=$tarif['tar_price']?>"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="border-bottom p-0 input-group w-75">
+                            <input class="form-control border-0" type="number" name="display-<?=$tarif['tar_id']?>" value="<?=$tarif['tar_display']?>"/>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a href="#" data-toggle="modal" data-target="#title-<?=$tarif['tar_id']?>"><i class="fa fa-trash text-danger mr-2 h5"></i></a>
+                    </td>
+                </tr>
+                <!-- Modal de suppression -->
+                <?php if($_SESSION['user']['use_role'] !== 'ROLE_ADMIN') :?>
+                    <div class="modal fade" id="title-<?=$tarif['tar_id']?>" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-danger" id="exampleModalLabel">Désolé...</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Vous n'avez <b>pas les droits</b> pour supprimer une entrée du tableau.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php else :?>
+                    <div class="modal fade" id="title-<?=$tarif['tar_id']?>" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-danger" id="exampleModalLabel">Attention</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Êtes-vous sûr de vouloir supprimer l'entrée <b><?=$tarif['tar_title']?></b>?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                    <button type="submit" name="<?=$tarif['tar_id']?>" class="btn btn-danger" value="<?=$tarif['tar_id']?>">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ;?>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <input type="submit" name="update" class="btn btn-success text-white mb-3" value="Modifier"/>
+    </form>
+
+    <!-- FORMULAIRE D'AJOUT -->
+    <form action ="tarifAdd.php" method="POST" enctype="multipart/form-data" class="form-horizontal form-material"> 
+        <div class="card">
+        <h5 class="page-title text-uppercase font-medium font-14 pt-3 pb-3 text-center">Ajouter une nouvelle entrée au tableau</h5>
+            <div class="card-body d-md-flex d-sm-block p-2">
+                <div class="form-group col-md-5 col-sm-12 pb-2 mb-0">
+                    <label for="title">Libellé</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="text" name="title" id="title" value="<?=$_SESSION['titre']?>" class="form-control pl-2 border-0" placeholder="Libellé du nouveau tarif"/>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-4 col-sm-12 pb-2 mb-0">
+                    <label for="title">Prix</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="text" name="price" id="price" value="<?=$_SESSION['prix']?>" class="form-control pl-2 border-0" placeholder="Libellé du nouveau prix"/>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-3 col-sm-12 pb-2 mb-0">
+                    <label for="title">Ordre d'affichage</label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <input type="number" name="display" id="display" value="<?=$_SESSION['display']?>" class="form-control pl-2 border-0"/>
+                    </div>
+
+                        <small class="text-secondary">Ordre suggéré : <?=$count+1?></small>
+
+                </div>
+            </div>
+        </div>
+        <input type="submit" name="add" class="btn btn-primary mb-3" value="Ajouter"/>
+    </form>
+    
+</div>
+

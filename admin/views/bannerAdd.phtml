@@ -1,0 +1,92 @@
+
+<a href="bannerList.php" class="btn btn-secondary mb-3"><i class="fas fa-arrow-alt-circle-left pr-1"></i>Annuler</a>
+
+<div id="drop-area" class="flex-wrap">
+  <form class="my-form" method="POST" enctype="multipart/form-data" class="form-horizontal form-material">
+    
+    <!-- PHOTO -->
+    <div class="form-group col-md-12">
+    
+        <label class="col-md-12 pl-0 h3 text-primary text-center mb-2 pr-0" for="picture">Photo</label>
+            <div class="parent-div d-flex justify-content-center position-relative">
+                <input type="file" name="picture" id="file-upload" class="pointer" data-max-files="1" style="position:absolute;top:0;left:0;opacity:0"/>
+                <span id="file-upload-btn" class="btn btn-primary"><i class="fa fa-download text-white pr-2" aria-hidden="true"></i>Drag or browse</span>
+            </div>    
+            <div class="form-group col-md-12 py-2 mb-0">
+                <label for="file-upload" id="file-drag" class="d-flex justify-content-center">
+                    <!-- EDITION : si on a une photo on l'affiche et on passe le nom de cette photo dans un champ caché ! -->
+                    <?php if($oldPicture !== null) :?>
+                        <input type="hidden" name="oldPicture" value="<?=$oldPicture?>">
+                        <img id="file-image" src="../uploads/banner/<?=$oldPicture?>" class="hidden pt-2 d-block m-auto">
+                    <?php else:?>
+                        <img id="file-image" src="../uploads/services/default-image-test.png" class="hidden pt-2 d-block m-auto">
+                    <?php endif;?>
+                    <div class="position-relative">
+                        <div id="start" style="left: 0; top: 0; opacity: 0; position: absolute;">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            <div></div>
+                            <span id="file-upload-btn" class="btn btn-primary"></span>
+                            <div id="notimage" class="hidden"></div>
+                        </div>
+                        <div id="response" class="hidden" style="opacity:0;display:none">
+                            <div id="messages"></div>
+                            <progress class="progress" id="file-progress" value="0">
+                                <span>0</span>%
+                            </progress>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="parent-div d-flex justify-content-center flex-wrap">
+                <?php if($oldPicture !== null) :?>
+                    <div class="w-100 text-center pt-2">
+                        <label class="pr-2 text-danger" for="deletePicture">Supprimer la photo ?</label>
+                        <input class="form-check-input ml-0" type="checkbox" id="deletePicture" name="deletePicture" value="<?=$deletePicture?>">
+                    </div>
+                    <p class="form-text text-center text-primary">Pour modifier une image téléchargez en une nouvelle. Sinon l'ancienne sera conservée !</p>
+                <?php endif;?>
+                
+                <?php if(!empty($errors) && isset($errors['picture'])):?>
+                    <p class="text-danger mb-0"><?=$errors['picture']?></p>
+                <?php endif ?>
+            </div>
+    
+    </div>
+
+    <!-- TITRE -->
+    <div class="form-group col-md-12 pb-1">
+        <label for="title">Titre</label>
+        <div class="col-md-6 border-bottom p-0">
+            <input type="text" name="title" id="title" value="<?=$title?>" class="pl-2 border-0"/>
+        </div>
+        <?php if(!empty($errors) && isset($errors['title'])):?>
+            <p class="text-danger mb-0 pt-1"><?=$errors['title']?></p>
+        <?php endif ?>
+    </div>
+
+    <!-- ORDRE AFFICHAGE -->
+    <div class="form-group col-md-4 pb-4 mb-0">
+        <label for="display">Afficher la photo en position...</label>
+        <div class="col-md-6 border-bottom p-0">
+        <select class="custom-select p-2" id="display" name="display">
+            <option value="1" <?php if (array_key_exists('id',$_GET) && $banner['ban_display'] == 1) :?> selected <?php endif;?>>1</option>
+            <option value="2" <?php if (array_key_exists('id',$_GET) && $banner['ban_display'] == 2) :?> selected <?php endif;?>>2</option>
+            <option value="3" <?php if (array_key_exists('id',$_GET) && $banner['ban_display'] == 3) :?> selected <?php endif;?>>3</option>
+        </select>
+        </div>
+        <?php if(!empty($errors) && isset($errors['display'])):?>
+            <p class="text-danger mb-0 pt-1"><?=$errors['display']?></p>
+        <?php endif ?>
+        <p class="text-secondary mb-0 mt-2">Tu peux mettre 3 photos au <b>total</b>.</p>
+        <?php if($display == null):?>
+            <small class="text-secondary">Pour info tu as déjà <?=$count['ban_count']?> photo(s).</small>
+        <?php endif ?>
+    </div>
+
+    <!-- BOUTON ENVOYER / MODIFIER ? -->
+    <div class="form-group col-md-12">
+        <button type="submit" class="btn btn-primary mt-3"><?php if (is_null($id)) : ?>AJOUTER<?php else : ?>MODIFIER<?php endif; ?></button>
+    </div>
+
+  </form>
+</div>

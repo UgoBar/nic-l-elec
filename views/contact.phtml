@@ -1,0 +1,20 @@
+<div class="fond-perdu"></div>
+
+
+<section class="contact">
+    <div class="container flex wrap justify-around">
+        <form method="post" action="contactForm.php" class="indexContact flex wrap justify-around">
+            <h2 class="text-center text-blue w-100">Contact</h2>
+            <p class="text-center text-muted m-0">Si vous avez une demande n'hésitez pas à m'envoyer un mail à l'aide du formulaire ci dessous.</p>
+            <div class="innerForm flex wrap justify-around">
+                <input class="w-50" type="text" name="name" id="name" placeholder="Entrez votre nom" required>
+                <input class="w-50" type="email" name="email" id="email" placeholder="Entrez votre email" required>
+                <input class="w-100" type="text" name="subject" placeholder="Sujet du mail" required>
+                <textarea name="content" id="content" placeholder="Formulez votre demande" required></textarea>
+                <small class="w-100">Tous les champs obligatoires.</small>
+                <small class="w-100 bold">Réponse en 24h.</small>
+            </div>
+            <button class="btn btn-blue m-auto" type="submit" name="contactMe">Envoyer</button>
+        </form>
+    </div>
+</section>

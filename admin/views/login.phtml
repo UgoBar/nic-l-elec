@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <script src="https://kit.fontawesome.com/73ab01ebea.js" crossorigin="anonymous"></script>
+        <title>Connexion</title>
+        
+        <script src="https://kit.fontawesome.com/73ab01ebea.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap CSS -->
+	      <link rel="stylesheet" href="css/style.min.css">
+        <link rel="stylesheet" href="css/log.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="../css/icons.css">
+    </head>
+    <body>
+        <form class="form-signin"  method="POST">
+          <i class="icon-admin2 <?php if ($error === true) :?> text-danger <?php endif;?>"></i>
+          <h1 class="text-center pb-3">Connexion</h1>
+          <div class="form-group">
+            <label for="email">Email</label>  
+            <input type="email" class="form-control" name ="email" id="email" placeholder="Email" value="<?=$email?>">
+          </div>
+          <div class="form-group mb-0">
+            <label for="mdp">Mot de passe</label>
+            <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Mot de passe">
+            <?php if ($error === true) :?><p class="text-danger mb-2">Mail ou mot de passe incorrect...</p><?php endif;?>
+          </div>
+          <button type="submit" class="btn btn-primary buttonLayout" name="connexion">Connexion</button>
+        
+          <?php if($displayConfirmation == false) :?>
+            <p class="pt-3 text-center"><a class="underlineHover" href="#" data-toggle="modal" data-target="#updatePassword">Mot de passe oublié ?</a></p>
+            <?php if ($mailError === true) :?><p class="btn-danger text-white text-center w-100 py-2">Mail incorrect ou inexistant</p><?php endif;?>
+          <?php else :?>
+            <p class="btn-success text-white text-center w-100 mt-3 py-2"><i class="fas fa-paper-plane pr-1"></i>Mail envoyé !</p>
+          <?php endif;?>
+          </form>
+
+          <!-- Modal pour réinitialiser son mot de passe -->
+          <form method="POST">
+          <div class="modal fade" id="updatePassword" tabindex="-1" aria-labelledby="supprimer" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="page-title text-uppercase font-medium font-14 text-center text-danger mb-0">Attention</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Tu es sur le point de <b>réinitialiser ton mot de passe</b>.<br>
+                            Si c'est ce que tu veux faire dans ce cas :<br><br>
+
+                            1/ Renseigne ton mail de connexion habituel.<br>
+                            2/ Tu recevras un mail. Check bien dans toutes les boîtes.<br>
+                            3/ Ce mail te donnera accès à une page pour <b>modifier</b> ton mot de passe.
+                        </div>
+                        
+                        <?php if($displayConfirmation == false) :?>
+                        <div class="form-group mb-0 px-3">
+                          <label for="mailTo">Email</label>
+                          <input type="text" class="form-control" name="mailTo" placeholder="Email de récupération" value="<?=$mailTo?>">
+                          <?php if ($mailError === true) :?><p class="text-danger mb-2">Mail incorrect ou inexistant en base.</p><?php endif;?>
+                        </div>
+                        <div class="d-flex justify-content-center m-3">
+                            <button type="button" class="btn btn-secondary mr-1" data-dismiss="modal">Annuler</button>
+                            <button type="submit" name="updatePassword" class="btn btn-success text-white">Envoyer</button>
+                        <?php else :?>
+                          <?=$mailSended?>
+                        <?php endif;?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Option 1: jQuery and Bootstrap Bundle -->
+        <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
+</html>

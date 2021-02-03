@@ -1,0 +1,143 @@
+<a href="userList.php" class="btn btn-secondary mb-3"><i class="fas fa-arrow-alt-circle-left pr-1"></i>Annuler</a>
+
+<form action="" id="file-upload-form" method="POST" enctype="multipart/form-data" class="form-horizontal form-material">
+<?php /* EDITION : si on a un ID on le met dans un champ caché ! */
+if($id !== null) :?><input type="hidden" name="id" value="<?=$id?>"><?php endif;?>
+<div class="row">
+
+    <div class="col-lg-4 col-xlg-3 col-md-12">
+    <label class="col-md-12 pl-0 h3 text-primary text-center mb-2 pr-0" for="avatar">Photo</label>
+                <div class="parent-div d-flex justify-content-center position-relative">
+                    <input type="file" name="avatar" id="file-upload" class="pointer" data-max-files="1" style="position:absolute;top:0;left:0;opacity:0"/>
+                    <span id="file-upload-btn" class="btn btn-primary"><i class="fa fa-download text-white pr-2" aria-hidden="true"></i>Drag or browse</span>
+                </div>    
+                <div class="form-group col-md-12 py-2 mb-0">
+                    <label for="file-upload" id="file-drag" class="d-flex justify-content-center">
+                        <!-- EDITION : si on a une photo on l'affiche et on passe le nom de cette photo dans un champ caché ! -->
+                        <?php if($oldPicture !== null) :?>
+                            <input type="hidden" name="oldPicture" value="<?=$oldPicture?>">
+                            <img id="file-image" src="../uploads/users/<?=$oldPicture ?>" class="hidden pt-2 d-block m-auto">
+                        <?php else:?>
+                            <img id="file-image" src="../uploads/users/default-drop-zone.png" class="hidden pt-2 d-block m-auto">
+                        <?php endif;?>
+                        <div class="position-relative">
+                            <div id="start" style="left: 0; top: 0; opacity: 0; position: absolute;">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                                <div></div>
+                                <span id="file-upload-btn" class="btn btn-primary"></span>
+                                <div id="notimage" class="hidden"></div>
+                            </div>
+                            <div id="response" class="hidden" style="opacity:0;display:none">
+                                <div id="messages"></div>
+                                <progress class="progress" id="file-progress" value="0">
+                                    <span>0</span>%
+                                </progress>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="parent-div d-flex justify-content-center flex-wrap">
+                    <?php if($oldPicture !== null) :?>
+                        <div class="w-100 text-center pt-2">
+                            <label class="pr-2 text-danger" for="deletePicture">Supprimer la photo ?</label>
+                            <input class="form-check-input ml-0" type="checkbox" id="deletePicture" name="deletePicture" value="<?=$deletePicture?>">
+                            <p class="form-text text-center text-primary">Pour modifier une image téléchargez en une nouvelle. Sinon l'ancienne sera conservée !</p>
+                        </div>
+                    <?php endif;?>
+                    <?php if(!empty($errors) && isset($errors['picture'])):?>
+                        <p class="text-danger mb-0"><?=$errors['picture']?></p>
+                    <?php endif ?>
+                </div>
+        </div>
+
+    <div class="col-lg-8 col-xlg-9 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group col-md-12 pb-4 mb-0">
+                    <label for="firstname">Prénom</label>
+                    <div class="col-md-6 border-bottom p-0">
+                        <input type="text" name="firstname" id="firstname" value="<?=$firstname?>" class="form-control pl-2 border-0"/>
+                    </div>
+                    <?php if(!empty($errors) && isset($errors['firstname'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['firstname']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-12 pb-4 mb-0">
+                    <label for="lastname">Nom</label>
+                    <div class="col-md-6 border-bottom p-0">
+                        <input type="text" name="lastname" id="lastname" value="<?=$lastname?>" class="form-control pl-2 border-0"/>
+                    </div>
+                    <?php if(!empty($errors) && isset($errors['lastname'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['lastname']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-12 pb-4 mb-0">
+                    <label for="email">Email</label>
+                    <div class="col-md-6 border-bottom p-0">
+                        <input type="text" name="email" id="email" value="<?=$email?>" class="form-control pl-2 border-0"/>
+                    </div>    
+                    <?php if(!empty($errors) && isset($errors['email'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['email']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-12 pb-4 mb-0">
+                    <label for="password">Mot de passe</label>
+                    <div class="col-md-6 border-bottom p-0">
+                        <input type="password" name="password" id="password" value="<?=$password?>" class="form-control pl-2 border-0"/>
+                    </div>
+                    <?php if(!empty($errors) && isset($errors['password'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['password']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-12 pb-4 mb-0">
+                    <label for="confirmPassword">Confirmez le mot de passe</label>
+                    <div class="col-md-6 border-bottom p-0">
+                        <input type="password" name="confirmPassword" id="confirmPassword" value="<?=$confirmPassword?>" class="form-control pl-2 border-0"/>
+                    </div>
+                    <?php if(!empty($errors) && isset($errors['confirmPassword'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['confirmPassword']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-6 pb-4 mb-0">
+                    <label for="role">Choix du rôle <span class="text-muted">(cliquez pour afficher le menu déroulant)</span></label>
+                    <select id="role" name="role" class="custom-select" >
+                        <option value="ROLE_ADMIN">Admin</option>
+                        <option value="ROLE_USER">User</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-12 mb-0">
+                    <label class="pr-2" for="topUser">Utilisateur classé "top"</label>
+                    <input class="form-check-input ml-0" type="checkbox" id="topUser" name="topUser" value="<?=$top?>"
+                    <?php if ($top ===  true):?> checked <?php endif;?>>
+                </div>
+                <div class="form-group col-md-12">
+                    <small class="text-muted">Si cette case est cochée cet utilisateur sera affiché dans la page "A propos"</small>
+                    <?php if(!empty($errors) && isset($errors['top'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['top']?></p>
+                    <?php endif ?>
+                </div>
+
+                <div class="form-group col-md-12 pb-4 mb-0 hidden" id="user-description">
+                    <label for="description">Texte de présentation <span class="text-muted">(Ce texte sera affiché dans la page "A propos")</span></label>
+                    <div class="col-md-12 border-bottom p-0">
+                        <textarea class="form-control" name ="description" id="description" rows="6" style="height: 300px;"><?=$description?></textarea>
+                    </div>    
+                    <?php if(!empty($errors) && isset($errors['description'])):?>
+                        <p class="text-danger mb-0 pt-1"><?=$errors['description']?></p>
+                    <?php endif ?>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xlg-3 col-md-12"></div>
+    <div class="col-lg-8 col-xlg-9 col-md-12">
+    <button type="submit" class="btn btn-primary"><?php if (is_null($id)) : ?>AJOUTER<?php else : ?>MODIFIER<?php endif; ?></button>
+    </div>
+</form>

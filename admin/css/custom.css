@@ -1,0 +1,71 @@
+img {
+  max-width: 100%;
+}
+
+.table td {
+  vertical-align: baseline;
+}
+
+#display {
+  background-color: #edf1f5;
+  cursor:pointer;
+}
+
+#drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.serviceAdd #drop-area {
+  width: 300px;
+}
+
+.my-form {
+  margin-bottom: 10px;
+}
+
+.my-form input {
+  background-color: #edf1f5;
+}
+
+#banner {
+  margin-top: 10px;
+}
+
+#banner img {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.box-info {
+  font-size:2.3rem;
+}
+
+.notes {
+  border-left: 4px solid #e1e1e1;
+  padding-left: 1rem;
+  margin-bottom:2rem;
+}
+
+#fileElem, #progress-bar, .hidden {
+  display: none;
+}
+
+@media (max-width: 820px)
+{
+  #drop-area {
+    width: 500px;
+  }
+}
+
+@media (max-width: 500px)
+{
+  #drop-area {
+    width: 300px;
+  }
+}

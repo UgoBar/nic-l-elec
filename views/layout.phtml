@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Nic.L Elec | <?=$title?></title>
+        <meta name="description" content="<?=$metaDescription?>">
+        <link rel="icon" href="img/nic.l-elec-favicon.png" />
+
+        <!-- Facebook Meta Tags -->
+        <meta property="og:url" content="https://www.nic-l-elec.fr/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Nic.L Elec | Electricien - Oléron">
+        <meta property="og:description" content="Electricien originaire de l'île d'Oléron, Nic.L Elec propose ses services pour l'installation, la réparation et l'optimisation de votre matériel électrique.">
+        <meta property="og:image" content="https://www.nic-l-elec.fr/img/nic.l-elec_social_media_card.jpg">
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="twitter:domain" content="nic-l-elec.fr">
+        <meta property="twitter:url" content="https://www.nic-l-elec.fr/">
+        <meta name="twitter:title" content="Nic.L Elec | Electricien - Oléron">
+        <meta name="twitter:description" content="Electricien originaire de l'île d'Oléron, Nic.L Elec propose ses services pour l'installation, la réparation et l'optimisation de votre matériel électrique.">
+        <meta name="twitter:image" content="https://www.nic-l-elec.fr/img/nic.l-elec_social_media_card.jpg">
+
+        <!-- FONT AWESOME -->
+        <script src="https://kit.fontawesome.com/73ab01ebea.js" crossorigin="anonymous"></script>
+        <!-- GOOGLE FONTS -->
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet"> <!-- Bondoni -->
+        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">  <!-- Jost -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@500&display=swap" rel="stylesheet">  <!-- Roboto Condensed -->
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/normalize.css" type="text/css">
+        <link rel="stylesheet" href="css/common.css" type="text/css">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    </head>
+
+    <body>
+        <!-- HEADER -->
+        <header>
+            <div class="container">
+                <nav class="flex">
+                    <!-- Brand logo -->
+                    <div class="w-40">
+                        <a href="/">
+                            <img class="flex align-center" src="img/logo-nic.l-elec-min.png" alt="logo de l'entreprise Nic.L Elec">
+                        </a>
+                    </div>
+                    <!-- Desktop navbar -->
+                    <div class="w-60 flex justify-around align-center" id="navbar-desktop">
+                        <a href="/" class="<?php if($view=='index'):?>active<?php endif?>">Home</a>
+                        <a href="/a-propos" class="<?php if($view=='about'):?>active<?php endif?>">A propos</a>
+                        <a href="/realisations" class="<?php if($view=='projects'):?>active<?php endif?>">Réalisations</a>
+                        <a href="/services" class="<?php if($view=='services'):?>active<?php endif?>">Services</a>
+                        <a href="/contact" class="<?php if($view=='contact'):?>active<?php endif?>">Contact</a>
+                    </div>
+
+                    <!-- Mobile navbar -->
+                    <div id="toggle-navbar">
+                        <button class="text-blue" id="burger" type="button"><i class="fas fa-bars"></i></button>
+                        <button class="hidden text-blue" id="cross" type="button"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="hidden w-100 flex column" id="navbar-mobile">
+                        <a href="/" class="<?php if($view=='index'):?>active<?php endif?>">Home</a>
+                        <a href="/a-propos" class="<?php if($view=='about'):?>active<?php endif?>">A propos</a>
+                        <a href="/realisations" class="<?php if($view=='projects'):?>active<?php endif?>">Réalisations</a>
+                        <a href="/services" class="<?php if($view=='services'):?>active<?php endif?>">Services</a>
+                        <a href="/contact" class="<?php if($view=='contact'):?>active<?php endif?>">Contact</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MAIN -->
+        <main>
+            <?php require($view.'.phtml');?>
+        </main>
+
+        <!-- FOOTER -->
+        <?php if($view !== 'mailSent'):?>
+        <footer>
+            <div class="btn-gradient"></div>
+            <div class="container flex wrap align-center justify-center">
+               
+                <figure class="w-100">
+                    <img src="img/logo-nic.l-elec.svg" alt="logo de l'entreprise Nic.L Elec">
+                </figure>
+                <div class="footer-contact text-center">
+                    <p class="text-center">06 07 70 16 59</p>
+                    <a href="mailto:langiller.nicolas@gmail.com" class="text-blue">langiller.nicolas@gmail.com</a>
+                </div>
+                <p class="text-center text-muted w-100">R.C.S. LA ROCHELLE - 848 251 377 (00018)</p>
+                
+            </div>
+        </footer>
+        <?php endif?>
+        <!-- JAVASCRIPT -->
+        <script src="js/main.js"></script>
+    </body>
+</html>

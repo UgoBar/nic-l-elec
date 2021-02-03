@@ -1,0 +1,37 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.nic-l-elec.fr/$1 [R,L]
+
+#-------------------------
+#       BACK OFFICE
+#-------------------------
+
+# Login 
+RewriteRule ^login$  /admin/login.php [L]
+
+
+
+
+#-------------------------
+#       FRONT END
+#-------------------------
+
+# Home 
+RewriteRule ^home$  /index.php [L]
+
+# About 
+RewriteRule ^a-propos$  /about.php [L]
+
+# Projects
+RewriteRule ^realisations$  /projects.php [L]
+
+# Services
+RewriteRule ^services$  /services.php [L]
+
+# Contact
+RewriteRule ^contact$  /contact.php [L]
+
+# MailSent
+RewriteRule ^mail_envoye$  /mailSent.php [L]
